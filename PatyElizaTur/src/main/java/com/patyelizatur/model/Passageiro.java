@@ -1,7 +1,5 @@
 package com.patyelizatur.model;
 
-
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
@@ -9,10 +7,8 @@ import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
 @Entity
-public class Passageiro {
-    @Id
-    @NotEmpty(message = "CPF é obrigatório!!")
-    private String cpf;
+public class Passageiro extends AbstractEntity{
+
     private String nome;
     private String rg;
     @Email
@@ -23,13 +19,6 @@ public class Passageiro {
     private Date dtaNascimento;
 
     //get and setter
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
 
     public String getRg() {
         return rg;
