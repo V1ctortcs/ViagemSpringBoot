@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface PassageiroRepository extends CrudRepository<Passageiro, Long>   {
-    List<Passageiro> findByNameIgnoreCaseContaining(String name);
+public interface PassageiroRepository extends CrudRepository<Passageiro, String>   {
+    List<Passageiro> findByCpfIgnoreCaseContaining(String cpf);
 
 }
