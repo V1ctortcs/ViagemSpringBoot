@@ -8,9 +8,9 @@ import java.util.Date;
 
 @Entity
 public class Passageiro extends AbstractEntity{
-
-    private String nome;
     private String rg;
+    private String nome;
+
     @Email
     private String email;
     private String celular;
@@ -19,7 +19,6 @@ public class Passageiro extends AbstractEntity{
     private Date dtaNascimento;
 
     //get and setter
-
     public String getRg() {
         return rg;
     }

@@ -5,11 +5,9 @@ import com.patyelizatur.repository.PassageiroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
@@ -29,17 +27,33 @@ public class PassageiroController {
     }
 
     @GetMapping(path = "/{cpf}")
-    public ResponseEntity<?> getPassageiroById(@PathVariable("cpf") String cpf) {
-
+    public ResponseEntity<?> getPassageiroByCpf(@PathVariable("cpf") String cpf) {
         verifyIfPassageiroExists(cpf);
         Optional<Passageiro> passageiro = passageiroDao.findById(cpf);
         return new ResponseEntity<>(passageiroDao.findByCpfIgnoreCaseContaining(cpf), HttpStatus.OK);
     }
 
+    @GetMapping(path = "/findByrg/{rg}")
+    public ResponseEntity<?> findPassageiroByRg(@PathVariable String rg) {
+        return new ResponseEntity<>(passageiroDao.findByRgIgnoreCaseContaining(rg), HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<?> save(@Valid @RequestBody Passageiro passageiro) {
+        return new ResponseEntity<>(passageiroDao.save(passageiro), HttpStatus.CREATED);
+    }
+
+    @DeleteMapping(path = "/{cpf}")
+    public ResponseEntity<?> delete(@PathVariable String cpf) {
+        verifyIfPassageiroExists(cpf);
+        passageiroDao.deleteById(cpf);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     private void verifyIfPassageiroExists(String cpf) {
         Optional<Passageiro> passageiro = passageiroDao.findById(cpf);
         if (passageiro.isEmpty())
-            System.out.println("ERROR!! Cpf: " + cpf + " não encontrado");
-
+            System.out.println("ERRO!! Cpf: " + cpf + " não encontrado");
     }
+
 }

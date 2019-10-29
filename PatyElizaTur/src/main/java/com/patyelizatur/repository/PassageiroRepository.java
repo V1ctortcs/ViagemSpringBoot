@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface PassageiroRepository extends CrudRepository<Passageiro, String>   {
     List<Passageiro> findByCpfIgnoreCaseContaining(String cpf);
-
+    List<Passageiro> findByRgIgnoreCaseContaining(String rg);
 }
