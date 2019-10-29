@@ -26,8 +26,8 @@ public class PassageiroController {
         return new ResponseEntity<>(passageiroDao.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping(path = "/{cpf}")
-    public ResponseEntity<?> getPassageiroByCpf(@PathVariable("cpf") String cpf) {
+    @GetMapping(path = "/findBycpf/{cpf}")
+    public ResponseEntity<?> findPassageiroByCpf(@PathVariable("cpf") String cpf) {
         verifyIfPassageiroExists(cpf);
         Optional<Passageiro> passageiro = passageiroDao.findById(cpf);
         return new ResponseEntity<>(passageiroDao.findByCpfIgnoreCaseContaining(cpf), HttpStatus.OK);
@@ -43,7 +43,7 @@ public class PassageiroController {
         return new ResponseEntity<>(passageiroDao.save(passageiro), HttpStatus.CREATED);
     }
 
-    @DeleteMapping(path = "/{cpf}")
+    @DeleteMapping(path = "/deletBycpf/{cpf}")
     public ResponseEntity<?> delete(@PathVariable String cpf) {
         verifyIfPassageiroExists(cpf);
         passageiroDao.deleteById(cpf);
