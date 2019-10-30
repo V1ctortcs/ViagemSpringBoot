@@ -14,7 +14,7 @@ import java.util.Optional;
 @RequestMapping("passageiro")
 public class PassageiroController {
 
-    private final PassageiroRepository passageiroDao;
+    private PassageiroRepository passageiroDao;
 
     @Autowired
     public PassageiroController(PassageiroRepository passageiroDao) {
@@ -30,12 +30,12 @@ public class PassageiroController {
     public ResponseEntity<?> findPassageiroByCpf(@PathVariable("cpf") String cpf) {
         verifyIfPassageiroExists(cpf);
         Optional<Passageiro> passageiro = passageiroDao.findById(cpf);
-        return new ResponseEntity<>(passageiroDao.findByCpfIgnoreCaseContaining(cpf), HttpStatus.OK);
+        return new ResponseEntity<>(passageiroDao.findByCpf(cpf), HttpStatus.OK);
     }
 
     @GetMapping(path = "/findByrg/{rg}")
     public ResponseEntity<?> findPassageiroByRg(@PathVariable String rg) {
-        return new ResponseEntity<>(passageiroDao.findByRgIgnoreCaseContaining(rg), HttpStatus.OK);
+        return new ResponseEntity<>(passageiroDao.findByRg(rg), HttpStatus.OK);
     }
 
     @PostMapping

@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @MappedSuperclass
-public class AbstractEntity implements Serializable {
+public class AbstractEntityPassageiro implements Serializable {
 
     @Id
     @NotEmpty(message = "CPF é obrigatório!!")
@@ -18,7 +18,7 @@ public class AbstractEntity implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AbstractEntity that = (AbstractEntity) o;
+        AbstractEntityPassageiro that = (AbstractEntityPassageiro) o;
         return cpf == that.cpf;
     }
     @Override

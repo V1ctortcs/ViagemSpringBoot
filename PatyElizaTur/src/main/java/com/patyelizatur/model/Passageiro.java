@@ -1,16 +1,13 @@
 package com.patyelizatur.model;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
 @Entity
-public class Passageiro extends AbstractEntity{
+public class Passageiro extends AbstractEntityPassageiro {
     private String rg;
     private String nome;
-
     @Email
     private String email;
     private String celular;
