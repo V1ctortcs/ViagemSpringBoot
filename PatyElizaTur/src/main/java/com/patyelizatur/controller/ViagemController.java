@@ -5,11 +5,9 @@ import com.patyelizatur.repository.ViagemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
@@ -29,6 +27,18 @@ public class ViagemController  {
         Optional<Viagem> viagem = viagemDao.findById(codViagem);
         return new ResponseEntity<>(viagemDao.findByCodViagem(codViagem),HttpStatus.OK);
 
+    }
+
+    @PostMapping
+    public ResponseEntity<?> save(@Valid @RequestBody Viagem viagem) {
+        return new ResponseEntity<>(viagemDao.save(viagem), HttpStatus.CREATED);
+    }
+
+    @DeleteMapping(path = "/deletBycodViagem/{codViagem}")
+    public ResponseEntity<?> delete(@PathVariable Long codViagem) {
+        verifyViagemExist(codViagem);
+        viagemDao.deleteById(codViagem);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     private void verifyViagemExist(Long codViagem){

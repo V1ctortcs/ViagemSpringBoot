@@ -28,10 +28,18 @@ public class PassageiroController {
 
     @GetMapping(path = "/findBycpf/{cpf}")
     public ResponseEntity<?> findPassageiroByCpf(@PathVariable("cpf") String cpf) {
-        verifyIfPassageiroExists(cpf);
+        verifyIfPassageiroExistsCpf(cpf);
         Optional<Passageiro> passageiro = passageiroDao.findById(cpf);
         return new ResponseEntity<>(passageiroDao.findByCpf(cpf), HttpStatus.OK);
     }
+
+    @GetMapping(path = "/findBynome/{nome}")
+    public ResponseEntity<?> findPassageiroByNome(@PathVariable("nome") String nome){
+        verifyIfPassageiroExistsNome(nome);
+        Optional<Passageiro> passageiro = passageiroDao.findById(nome);
+        return new ResponseEntity<>(passageiroDao.findByNomeIgnoreCaseContaining(nome),HttpStatus.OK);
+    }
+
 
     @GetMapping(path = "/findByrg/{rg}")
     public ResponseEntity<?> findPassageiroByRg(@PathVariable String rg) {
@@ -45,12 +53,19 @@ public class PassageiroController {
 
     @DeleteMapping(path = "/deletBycpf/{cpf}")
     public ResponseEntity<?> delete(@PathVariable String cpf) {
-        verifyIfPassageiroExists(cpf);
+        verifyIfPassageiroExistsCpf(cpf);
         passageiroDao.deleteById(cpf);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    private void verifyIfPassageiroExists(String cpf) {
+    private void verifyIfPassageiroExistsNome(String nome) {
+        Optional<Passageiro> passageiro = passageiroDao.findById(nome);
+        if (passageiro.isEmpty())
+            System.out.println("ERRO!! nome: " + nome + " não encontrado");
+    }
+
+
+    private void verifyIfPassageiroExistsCpf(String cpf) {
         Optional<Passageiro> passageiro = passageiroDao.findById(cpf);
         if (passageiro.isEmpty())
             System.out.println("ERRO!! Cpf: " + cpf + " não encontrado");
