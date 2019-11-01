@@ -1,17 +1,19 @@
 package com.patyelizatur.model;
 
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
 
 @MappedSuperclass
-public class AbstractEntityPassageiro implements Serializable {
+public abstract class AbstractEntityPassageiro implements Serializable {
 
     @Id
     @NotEmpty(message = "CPF é obrigatório!!")
     private String cpf;
+
+
 
     //equals and hashcode
     @Override

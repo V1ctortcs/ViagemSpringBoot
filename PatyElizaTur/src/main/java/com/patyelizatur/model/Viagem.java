@@ -1,13 +1,18 @@
 package com.patyelizatur.model;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 
 @Entity
 public class Viagem extends AbstractEntityViagem{
+
     private String nomeViagem;
     private BigDecimal precoViagem;
     private String empresaTrans;
+
 
     //getter and setter
 

@@ -1,11 +1,13 @@
 package com.patyelizatur.model;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 public class Passageiro extends AbstractEntityPassageiro {
+
     private String rg;
     private String nome;
     @Email
@@ -14,6 +16,14 @@ public class Passageiro extends AbstractEntityPassageiro {
     private String telResidencia;
     private String cep;
     private Date dtaNascimento;
+
+    //Criando tabela de log entre Passageiro e viagem
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "passageiroViagem",
+            joinColumns = @JoinColumn(name = "viagem_codViagem"),
+            inverseJoinColumns = @JoinColumn(name = "passageiro_cpf")
+    )
+    Set<Viagem> fkViagem;
 
     //get and setter
     public String getRg() {

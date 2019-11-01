@@ -4,3 +4,4 @@ INSERT INTO passageiro (cpf, celular, cep, dta_nascimento,email,nome,rg,tel_resi
 
 INSERT INTO viagem VALUES (DEFAULT, 'TESTEEMPRE', 'TESTENOME', 5000);
 INSERT INTO viagem VALUES (DEFAULT, 'TESTE2EMPRE', 'TESTE2NOME', 8000);
+

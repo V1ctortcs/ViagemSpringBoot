@@ -1,19 +1,19 @@
 package com.patyelizatur.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 
 import java.io.Serializable;
 import java.util.Objects;
 
+
 @MappedSuperclass
-public class AbstractEntityViagem implements Serializable {
+public abstract class AbstractEntityViagem implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codViagem;
+
+
     //equals and hashcode
     @Override
     public boolean equals(Object o) {
@@ -22,12 +22,14 @@ public class AbstractEntityViagem implements Serializable {
         AbstractEntityViagem that = (AbstractEntityViagem) o;
         return codViagem == that.codViagem;
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(codViagem);
     }
 
     //get and setter
+
     public Long getCodViagem() {
         return codViagem;
     }
