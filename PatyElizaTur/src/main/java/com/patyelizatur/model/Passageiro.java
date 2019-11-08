@@ -17,13 +17,13 @@ public class Passageiro extends AbstractEntityPassageiro {
     private String cep;
     private Date dtaNascimento;
 
-    //Criando tabela de log entre Passageiro e viagem
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "passageiroViagem",
-            joinColumns = @JoinColumn(name = "viagem_codViagem"),
-            inverseJoinColumns = @JoinColumn(name = "passageiro_cpf")
-    )
-    Set<Viagem> fkViagem;
+//    Criando tabela de log entre Passageiro e viagem
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(name = "passageiroViagem",
+//            joinColumns = @JoinColumn(name = "contrato_viagemCodViagem"),
+//            inverseJoinColumns = @JoinColumn(name = "contrato_passageiroCpf")
+//    )
+//    Set<Contrato> fkContraro;
 
     //get and setter
     public String getRg() {

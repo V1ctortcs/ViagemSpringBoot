@@ -1,12 +1,19 @@
 package com.patyelizatur.model;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
 @Entity
 public class Contrato extends AbstractEntityContrato{
     //FK passageiroViagem
+
     //fk cpfpassageiro
+    @ManyToOne
+    private Passageiro passageiro;
     //fk codViagem
+    @ManyToOne
+    private  Viagem viagem;
+
     //anexar pdf do contrato no BD
 
     private String formPagamento;
