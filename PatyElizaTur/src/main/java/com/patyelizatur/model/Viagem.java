@@ -8,7 +8,9 @@ import java.util.Set;
 
 @Entity
 public class Viagem extends AbstractEntityViagem{
-
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "idPagamento", referencedColumnName = "idPagamento")
+//    private Pagamento pag;
     private String nomeViagem;
     private BigDecimal precoViagem;
     private String empresaTrans;
