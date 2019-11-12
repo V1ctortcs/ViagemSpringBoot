@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import java.math.BigDecimal;
+
 @Entity
 public class Contrato extends AbstractEntityContrato {
 
@@ -12,18 +12,37 @@ public class Contrato extends AbstractEntityContrato {
     @JoinColumn(name = "idPagamento", referencedColumnName = "idPagamento")
     private Pagamento pagamento;
 
-    //fk cpfpassageiro
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cpf", referencedColumnName = "cpf")
     private Passageiro passageiro;
 
-    //fk codViagem
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "codViagem", referencedColumnName = "codViagem")
     private  Viagem viagem;
 
-    //anexar pdf do contrato no BD
+    public Pagamento getPagamento() {
+        return pagamento;
+    }
 
+    public void setPagamento(Pagamento pagamento) {
+        this.pagamento = pagamento;
+    }
 
+    public Passageiro getPassageiro() {
+        return passageiro;
+    }
 
+    public void setPassageiro(Passageiro passageiro) {
+        this.passageiro = passageiro;
+    }
+
+    public Viagem getViagem() {
+        return viagem;
+    }
+
+    public void setViagem(Viagem viagem) {
+        this.viagem = viagem;
+    }
 }
