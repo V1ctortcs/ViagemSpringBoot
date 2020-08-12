@@ -26,6 +26,7 @@ public class ViagemController  {
         verifyViagemExist(codViagem);
         Optional<Viagem> viagem = viagemDao.findById(codViagem);
         return new ResponseEntity<>(viagemDao.findByCodViagem(codViagem),HttpStatus.OK);
+
     }
 
     @PostMapping
@@ -44,5 +45,7 @@ public class ViagemController  {
         Optional<Viagem> viagem = viagemDao.findById(codViagem);
         if (!viagem.isPresent())
             System.out.println("codigo não localizado");
+
     }
+
 }

@@ -42,4 +42,27 @@ public class ContratoController {
             System.out.println("ERRO!! Contrato: " + codContrato + "Não encontrado");
         }
     }
+
+
+
+//    @GetMapping(path = "/findyByCpf/{cpf}")
+//    public ResponseEntity<?>findContratoByCpfPassageiro(@PathVariable("cpf") String cpf){
+//        verifyIfContratoExistsCpf(cpf);
+//        Optional<Contrato> contrato = contratoDao.findById(cpf);
+//        return  new ResponseEntity<>(contratoDao.findByCpf(cpf), HttpStatus.OK);
+//    }
+
+//    private void verifyIfContratoExistsCpf(String cpf) {
+//        Optional<Contrato> contrato = contratoDao.findById(cpf);
+//        if (contrato.isEmpty())
+//            System.out.println("ERRO!! Cpf: " + cpf + " não encontrado");
+//    }
+
+
+
+
+
+
+
+
 }
