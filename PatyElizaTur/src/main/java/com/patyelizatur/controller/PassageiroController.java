@@ -2,6 +2,7 @@ package com.patyelizatur.controller;
 
 import com.patyelizatur.model.Passageiro;
 import com.patyelizatur.repository.PassageiroRepository;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Optional;
 
+@Api(tags="Passenger")
 @RestController
 @RequestMapping("passageiro")
 public class PassageiroController {

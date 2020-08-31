@@ -1,6 +1,7 @@
 package com.patyelizatur.controller;
 
 import com.patyelizatur.model.PacoteViagem;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,11 +11,12 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
+@Api(tags="Travel Package")
 @RestController
 @RequestMapping("pacoteViagem")
 public class PacoteViagemController {
 
-    @ApiOperation("Lista os pacotes cadastrados no sistema")
+    @ApiOperation(value = "Lista os pacotes cadastrados no sistema", tags = {"Travel Package"})
     @GetMapping(path = "/findAll")
     public ResponseEntity<PacoteViagem> listAll(){
         List<PacoteViagem> pacoteViagens = new ArrayList();
