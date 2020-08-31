@@ -3,6 +3,7 @@ package com.patyelizatur.controller;
 import com.patyelizatur.model.Veiculo;
 import com.patyelizatur.repository.PassageiroRepository;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 
+@Api(tags="Vehicle")
 @RestController
 @RequestMapping("veiculo")
 public class VeiculoController {
