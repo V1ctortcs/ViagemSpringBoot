@@ -14,7 +14,6 @@ public class Veiculo implements Serializable {
     private Integer codVeiculo;
     private Integer qtdAssentos;
     private Integer tipoAssentos;
-//    private Empresa codEmpresa;
     private String tipoVeiculo;
     private String fabricante;
     private String modelo;
