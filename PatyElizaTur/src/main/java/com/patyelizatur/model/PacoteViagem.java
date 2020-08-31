@@ -16,7 +16,7 @@ public class PacoteViagem {
     private Integer idPacoteViagem;
     private Date dataCadastro;
     private String nomePacoteViagem;
-    private String descrição;
+    private String descricao;
     private Date dataViagem;
     private Date dataRetorno;
     @OneToMany(mappedBy = "codHospedagem")
